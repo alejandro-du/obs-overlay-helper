@@ -1,0 +1,9 @@
+# Swift PM
+.build/
+
+# macOS
+.DS_Store
+
+# Build Artifacts
+*.app
+OBSOverlayHelper.app/
