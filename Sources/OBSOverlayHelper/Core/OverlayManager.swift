@@ -105,9 +105,18 @@ class OverlayManager {
     }
 
     func updateFrame() {
-        guard let panel = panel, let screen = NSScreen.main, let pos = AppState.shared.currentPosition else { return }
+        guard let panel = panel, let pos = AppState.shared.currentPosition else { return }
 
         let state = AppState.shared
+        
+        var targetScreen = NSScreen.screens.first
+        if !state.targetDisplayName.isEmpty {
+            if let matchedScreen = NSScreen.screens.first(where: { $0.localizedName == state.targetDisplayName }) {
+                targetScreen = matchedScreen
+            }
+        }
+        guard let screen = targetScreen else { return }
+        
         var w = state.overlayWidth
         var h = state.overlayHeight
 

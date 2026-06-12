@@ -80,6 +80,15 @@ struct SettingsView: View {
     var layoutTab: some View {
         Form {
             Section {
+                Picker("Target Display", selection: $state.targetDisplayName) {
+                    Text("Default (Primary)").tag("")
+                    ForEach(NSScreen.screens, id: \.localizedName) { screen in
+                        Text(screen.localizedName).tag(screen.localizedName)
+                    }
+                }
+            } header: { Text("Display") }
+
+            Section {
                 HStack {
                     Text("Width:")
                     TextField("Width", value: $state.overlayWidth, format: .number)
@@ -127,5 +136,6 @@ struct SettingsView: View {
             } header: { Text("Offset: Bottom Right") }
         }
         .padding()
+        .frame(height: 550) // Adjust height to prevent scrolling with new section
     }
 }

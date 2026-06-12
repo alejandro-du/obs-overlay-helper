@@ -48,6 +48,7 @@ class AppState: ObservableObject {
     @AppStorage("borderStyle") var borderStyle: Int = 1 { didSet { objectWillChange.send() } } // 0: Solid, 1: Dashed, 2: Dotted
     @AppStorage("showLabel") var showLabel: Bool = true { didSet { objectWillChange.send() } }
     @AppStorage("cornerRadius") var cornerRadius: Double = 0.0 { didSet { objectWillChange.send() } } // Added corner radius
+    @AppStorage("targetDisplayName") var targetDisplayName: String = "" { didSet { objectWillChange.send() } } // Added display target
     
     // Labels
     @AppStorage("labelText_fullscreen") var labelText_fullscreen: String = "Cam — Fullscreen" { didSet { objectWillChange.send() } }
