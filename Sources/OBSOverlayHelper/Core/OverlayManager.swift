@@ -18,7 +18,7 @@ class OverlayManager {
         )
 
         panel.isFloatingPanel = true
-        panel.level = .floating
+        panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         panel.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle]
         panel.backgroundColor = .clear
         panel.isOpaque = false

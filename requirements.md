@@ -25,7 +25,7 @@ The user records screen-capture videos in OBS. A "talking head" camera feed is c
 ### 3.2 Overlay window
 
 - When a shortcut is triggered, the app must display a floating, borderless rectangle on screen in the configured position.
-- The overlay window must sit above all other application windows at all times (always-on-top behaviour).
+- The overlay window must sit above all other application windows at all times (always-on-top behaviour). This includes full-screen applications and presentations (e.g., Keynote slideshows).
 - The overlay must be fully click-through: mouse clicks, scrolls, and drags must pass through it to whatever is underneath. The user must never need to dismiss or interact with the overlay directly.
 - The overlay must not appear in Mission Control, Exposé, or the app switcher (Cmd+Tab).
 - The overlay must not capture focus or change the active application.
@@ -146,7 +146,7 @@ The user records screen-capture videos in OBS. A "talking head" camera feed is c
 The following stack is recommended for a minimal, native macOS implementation:
 
 - **Swift + SwiftUI** for the settings panel and menu bar extra
-- **AppKit (NSWindow, NSPanel)** for the overlay window, using `NSPanel` with `NSWindowStyleMask.nonactivatingPanel` and a `collectionBehavior` of `.canJoinAllSpaces` and `.stationary` to achieve always-on-top, click-through behaviour
+- **AppKit (NSWindow, NSPanel)** for the overlay window, using `NSPanel` with `NSWindowStyleMask.nonactivatingPanel`, a `collectionBehavior` of `.canJoinAllSpaces` and `.stationary`, and a window level of `CGWindowLevelForKey(.maximumWindow)` to achieve absolute always-on-top, click-through behaviour even over full-screen apps.
 - **KeyboardShortcuts** swift package for global shortcut detection
 - **UserDefaults** or a plist for persisting settings
 
