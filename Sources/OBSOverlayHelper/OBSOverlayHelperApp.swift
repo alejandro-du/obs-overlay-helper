@@ -33,13 +33,13 @@ class SettingsWindowManager {
 @main
 struct OBSOverlayHelperApp: App {
     @StateObject var state = AppState.shared
-    @State private var showingAccessibilityAlert = false
 
     init() {
         checkAccessibility(prompt: false)
         OverlayManager.shared.setup()
 
         KeyboardShortcuts.onKeyDown(for: .hideOverlay) { AppState.shared.hide() }
+        KeyboardShortcuts.onKeyDown(for: .hideOverlayAlternate) { AppState.shared.hide() }
         KeyboardShortcuts.onKeyDown(for: .positionFullscreen) { AppState.shared.moveTo(position: .fullscreen) }
         KeyboardShortcuts.onKeyDown(for: .positionTopLeft) { AppState.shared.moveTo(position: .topLeft) }
         KeyboardShortcuts.onKeyDown(for: .positionTopRight) { AppState.shared.moveTo(position: .topRight) }

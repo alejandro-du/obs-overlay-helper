@@ -9,6 +9,7 @@ RESOURCES_DIR="$CONTENTS_DIR/Resources"
 
 echo "Building $APP_NAME using Swift Package Manager..."
 swift build -c release
+BUILD_DIR="$(swift build -c release --show-bin-path)"
 
 echo "Creating app bundle structure..."
 rm -rf "$APP_DIR"
@@ -16,7 +17,10 @@ mkdir -p "$MACOS_DIR"
 mkdir -p "$RESOURCES_DIR"
 
 echo "Copying executable..."
-cp ".build/release/$APP_NAME" "$MACOS_DIR/"
+cp "$BUILD_DIR/$APP_NAME" "$MACOS_DIR/"
+
+echo "Copying shortcut resources..."
+ditto "$BUILD_DIR/KeyboardShortcuts_KeyboardShortcuts.bundle" "$RESOURCES_DIR/KeyboardShortcuts_KeyboardShortcuts.bundle"
 
 echo "Creating Info.plist..."
 cat > "$CONTENTS_DIR/Info.plist" <<EOF

@@ -29,7 +29,8 @@ struct SettingsView: View {
 
             Section {
                 KeyboardShortcuts.Recorder("Hide Overlay", name: .hideOverlay)
-            } header: { Text("Hide Shortcut") }
+                KeyboardShortcuts.Recorder("Hide Overlay (Alternate)", name: .hideOverlayAlternate)
+            } header: { Text("Hide Shortcuts") }
         }
         .padding()
     }

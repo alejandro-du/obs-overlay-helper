@@ -4,6 +4,7 @@ import KeyboardShortcuts
 extension KeyboardShortcuts.Name {
     static let positionFullscreen = Self("positionFullscreen")
     static let hideOverlay = Self("hideOverlay")
+    static let hideOverlayAlternate = Self("hideOverlayAlternate")
     static let positionTopLeft = Self("positionTopLeft")
     static let positionTopRight = Self("positionTopRight")
     static let positionBottomLeft = Self("positionBottomLeft")
